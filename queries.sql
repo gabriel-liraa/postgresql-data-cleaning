@@ -118,7 +118,7 @@ WHERE author ~ '^Writtenby:[A-Za-z]+(,[A-Za-z]+)+';
 
 -- Separando os diferentes autores em um campo, em índices de um array
 
-with cleaned_author_select AS (
+WITH cleaned_author_select AS (
 	SELECT TRIM(TRAILING ',' FROM REPLACE(author, 'Writtenby:', '')) AS cleaned_author
 	FROM data),
 	
@@ -149,7 +149,7 @@ WHERE narrator !~ '^Narratedby:[A-Za-z]+';
 -- Separando os diferentes narradores em um campo, em índices de um array
 -- Os tratamentos para esse campo serão os mesmos do campo 'author'
 
-with cleaned_narrator_select AS (
+WITH cleaned_narrator_select AS (
 	SELECT TRIM(TRAILING ',' FROM REPLACE(narrator, 'Narratedby:', '')) AS cleaned_narrator
 	FROM data),
 	

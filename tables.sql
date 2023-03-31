@@ -27,12 +27,12 @@ CREATE TABLE cleaned_table AS (
 	),
 	-- Dados de autores tratados
 	cleaned_author_select AS (
-		SELECT TRIM(trailing ',' FROM REPLACE(author, 'Writtenby:', '')) AS cleaned_author
+		SELECT TRIM(TRAILING ',' FROM REPLACE(author, 'Writtenby:', '')) AS cleaned_author
 		FROM data
 	),
 	-- Dados de autores tratados convertidos em arrays
 	arrays_author AS (
-		SELECT string_to_array(cleaned_author, ',') AS arrays
+		SELECT STRING_TO_ARRAY(cleaned_author, ',') AS arrays
 		FROM cleaned_author_select
 	),
 	-- Dados de autores tratados separados em 1 coluna por autor
@@ -46,12 +46,12 @@ CREATE TABLE cleaned_table AS (
 	),
 	-- Dados de narradores tratados
 	cleaned_narrator_select AS (
-		SELECT TRIM(trailing ',' FROM REPLACE(narrator, 'Narratedby:', '')) AS cleaned_narrator
+		SELECT TRIM(TRAILING ',' FROM REPLACE(narrator, 'Narratedby:', '')) AS cleaned_narrator
 		FROM data
 	),
 	-- Dados de narradores tratados convertidos em arrays
 	arrays_narrator AS (
-		SELECT string_to_array(cleaned_narrator, ',') AS arrays
+		SELECT STRING_TO_ARRAY(cleaned_narrator, ',') AS arrays
 		FROM cleaned_narrator_select
 	),
 	-- Dados de narradores tratados separados em 1 coluna por autor
@@ -82,26 +82,26 @@ CREATE TABLE cleaned_table AS (
 	
 		CAST(CASE
 			WHEN time ~ '^\d{1,3}( mins?| hrs?| hrs? and \d{1,2} mins?)$'
-			THEN extract(epoch FROM REPLACE(time, 'and ', '')::INTERVAL)/60
+			THEN EXTRACT(EPOCH FROM REPLACE(time, 'and ', '')::INTERVAL)/60
 			ELSE 0
 		END AS DECIMAL(4, 0)) AS duration,
 		
 	-- releasedate
 	
-		to_date(releasedate, 'DD-MM-YY') AS releasedate,
+		TO_DATE(releasedate, 'DD-MM-YY') AS releasedate,
 		
 	-- stars
 	
 		CAST(CASE
-			WHEN stars ~ '([0-5]{1}(.\d{1})?)' THEN split_part(stars, ' ', 1)
-			ELSE null
+			WHEN stars ~ '([0-5]{1}(.\d{1})?)' THEN SPLIT_PART(stars, ' ', 1)
+			ELSE NULL
 		END AS DECIMAL(2, 1)) AS stars,
 		
 	-- ratings
 	
 		CAST(CASE
 			WHEN stars ~ '(stars\d{1,3}(,\d{3})*)' 
-			THEN REPLACE(lTRIM(substring(stars FROM '(stars\d{1,3}(,\d{3})*)'), 'stars'), ',', '')
+			THEN REPLACE(LTRIM(SUBSTRING(stars FROM '(stars\d{1,3}(,\d{3})*)'), 'stars'), ',', '')
 			ELSE '0'
 		END AS integer) AS ratings,
 		
