@@ -165,3 +165,5 @@ select
 from arrays_narrator)
 
 select * from separated_columns_narrator;
+
+SELECT * FROM cleaned_table;
