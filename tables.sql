@@ -13,6 +13,9 @@ CREATE TABLE data (
 COPY data
 FROM '/home/gabriellira/Documentos/Dados/audible_cleaning/audible_uncleaned.csv' DELIMITER ',' CSV HEADER;
 
+DELETE FROM data
+WHERE language <> 'English';
+
 DROP TABLE IF EXISTS cleaned_table;
 CREATE TABLE cleaned_table AS (
 	-- Declarando CTE's
