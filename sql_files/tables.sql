@@ -11,7 +11,7 @@ CREATE TABLE data (
 );
 
 COPY data
-FROM '/home/gabriellira/Documentos/Dados/audible_cleaning/csv_files/audible_uncleaned.csv' DELIMITER ',' CSV HEADER;
+FROM 'path/to/audible_uncleaned.csv' DELIMITER ',' CSV HEADER;
 
 DELETE FROM data
 WHERE language <> 'English';
@@ -116,3 +116,5 @@ CREATE TABLE cleaned_table AS (
 	JOIN separated_columns_narrator USING(num)
 	JOIN separated_columns_author USING(num)
 );
+
+COPY cleaned_table TO 'path/to/audible_cleaned.csv' DELIMITER ',' CSV HEADER;
