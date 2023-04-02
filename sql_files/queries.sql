@@ -13,17 +13,6 @@ WHERE name IS NULL OR
 	stars IS NULL OR
 	price IS NULL;
 	
-
--- ===================== language =====================
-
-SELECT DISTINCT language
-FROM data;
-
-DELETE FROM data
-WHERE language <> 'English';
-
--- =====================================================
-
 -- ======================= price =======================
 
 -- Procurando por dados fora do padrão

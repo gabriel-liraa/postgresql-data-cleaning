@@ -11,7 +11,7 @@ CREATE TABLE data (
 );
 
 COPY data
-FROM '/home/gabriellira/Documentos/Dados/audible_cleaning/audible_uncleaned.csv' DELIMITER ',' CSV HEADER;
+FROM '/home/gabriellira/Documentos/Dados/audible_cleaning/csv_files/audible_uncleaned.csv' DELIMITER ',' CSV HEADER;
 
 DELETE FROM data
 WHERE language <> 'English';

@@ -9,7 +9,7 @@ Note que a limpeza feita pelo dono do post, se difere dessa, por algumas decisõ
 # Links
 
 - Dataset: https://www.kaggle.com/datasets/snehangsude/audible-dataset
-- Artigo Medium: 
+- Artigo Medium: Em breve.
 
 # Tecnologias utilizadas
 
