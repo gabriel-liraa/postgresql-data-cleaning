@@ -4,7 +4,7 @@
 
 Esse repositório tem o intúito de expor os arquivos de código usados para limpar os dados do dataset da Audible (plataforma de audibooks).
 
-A limpeza foi inteiramente feita pelo PostgreSQL, e o link para o artigo do Medium, em que explico todas as decisoẽs tomadas no projeto, está fixado abaixo, junto ao post do kaggle em que foi retirado o dataset.
+A limpeza foi inteiramente feita pelo PostgreSQL, o projeto está separado em 2 arquivos SQL, em que um é referente ao processo de exploração para a criação da tabela limpa, e o outro contém a criação e tratamentos das tabelas envolvidas (original e após limpeza).
 
 Note que a limpeza feita pelo dono do post, se difere dessa, por algumas decisões de projeto, portanto o arquivo final é distinto.
 
